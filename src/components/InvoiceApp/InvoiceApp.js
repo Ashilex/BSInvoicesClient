@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import { getUser, removeUserSession } from '../../Utils/Common';
 
 
-function AddInvoice(props) {
+function InvoiceApp(props) {
   const user = getUser();
 
   let navigate = useNavigate()
@@ -16,7 +16,7 @@ function AddInvoice(props) {
 
   return (
     <div>
-      {/*Welcome {user.name}!<br /><br />*/}
+      Welcome {user.name}!<br /><br />
       <h2>Aggiungi una fattura</h2>
 
       <input type="button" onClick={handleLogout} value="Logout" />
@@ -24,4 +24,4 @@ function AddInvoice(props) {
   )
 }
 
-export default AddInvoice;
+export default InvoiceApp;

@@ -13,7 +13,7 @@ function PrivateRoute({ children, redirectTo}) {
   const [auth,setAuth] = useState(false)
 
   useEffect(()=>{
-    axios.get(`http://localhost:3000/api/verifyFakeToken?token=${token}`)
+    axios.get(`http://localhost:3000/api/auth/verifyFakeToken?token=${token}`)
       .then( response => {
         // if(!response.ok) throw new Error(response.status)
         if(response.data.code==233) {

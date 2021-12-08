@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import AddInvoice from "./components/AddInvoice/AddInvoice";
+import InvoiceApp from "./components/InvoiceApp/InvoiceApp";
 import DeleteInvoice from "./components/DeleteInvoice/DeleteInvoice";
 import Login from "./components/Login/Login";
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
@@ -49,7 +49,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<PublicRoute redirectTo='/addInvoice'><Login/></PublicRoute>}/>
-          <Route path="/addInvoice" element={<PrivateRoute redirectTo="/login"><AddInvoice/></PrivateRoute>} />
+          <Route path="/addInvoice" element={<PrivateRoute redirectTo="/login"><InvoiceApp/></PrivateRoute>} />
         </Routes>
       </BrowserRouter>
     </div>
