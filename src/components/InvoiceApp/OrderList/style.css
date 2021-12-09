@@ -1,0 +1,13 @@
+.no-bill-orders-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.to-choose-list{
+    width: 600px;
+    height: 500px;
+    overflow: auto;
+    border: 2px solid black;
+}
