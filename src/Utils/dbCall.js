@@ -11,9 +11,12 @@ export const retrieveCompanies = () => {
   });
 }
 
-export const postBillData = (formData) => {
+export const postBillData = (formData, ordiniDaAggiornare) => {
   return axios.post(`${process.env.REACT_APP_HOST}/api/business/bill`, {
-    data: formData
+    data: {
+      form:formData,
+      ordersToUpdate: ordiniDaAggiornare
+    }
   })
     .then(function (response) {
       console.log(response);

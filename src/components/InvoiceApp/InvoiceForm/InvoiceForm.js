@@ -8,11 +8,13 @@ function InvoiceForm(props) {
   const [dataReady, setDataReady] = useState(false)
   const [companies, setCompanies] = useState(null)
   const { register, watch, formState: { errors }, handleSubmit } = useForm({mode:"onBlur", criteriaMode:"all", defaultValues: {iva_amount: "0.00"}});
-  const watchIVA = watch("iva", false)
+  const watchIVA = watch("with_iva", false)
+
   const onSubmit = (data) => {
     console.log('dati provenienti dal form', data)
     console.log('dati provenienti dal form', JSON.stringify(data))
-    postBillData(data)
+    console.log('dati provenienti dalla selezione ordini', JSON.stringify(props.ordiniDaAggiornare))
+    postBillData(data, props.ordiniDaAggiornare.filter(order=>order !== null).map(order=>order.id_external_order))
     alert(JSON.stringify(data));
 
   }
@@ -97,10 +99,10 @@ function InvoiceForm(props) {
                 </div>
                 <div className="jfy-right">con IVA ?</div>
                 <div className="jfy-left" >
-                  <input {...register("iva")} type="checkbox" value="B" />
+                  <input {...register("with_iva")} type="checkbox" />
                   <ErrorMessage
                     errors={errors}
-                    name="totale"
+                    name="with_iva"
                     render={({ message }) => {
                     return (<span>{message}</span>)
                     }}
@@ -108,7 +110,21 @@ function InvoiceForm(props) {
                   { watchIVA &&
                     <div>
                       <span>Totale iva</span>
-                      <input className="input-text" {...register("iva_total", { required: 'Questo campo è obbligatorio' })}  className="calendar" placeholder="Numero fattura" />
+                      <input className="input-text" {...register("iva_total", {
+                        required: 'Questo campo è obbligatorio',
+                        pattern: {
+                          value:/[1-9][0-9]{0,4}\.[0-9]{2}/,
+                          message: 'usa il formato 0.00'
+                        }})
+                      }  className="calendar"
+                         placeholder="Totale iva" />
+                      <ErrorMessage
+                        errors={errors}
+                        name="iva_total"
+                        render={({ message }) => {
+                          return (<span style={{"margin-left":'5px', 'color':'red'}}>{message}</span>)
+                        }}
+                      />
                     </div>
                   }
                 </div>

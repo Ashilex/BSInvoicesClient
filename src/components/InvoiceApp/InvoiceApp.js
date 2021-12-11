@@ -33,7 +33,7 @@ function InvoiceApp(props) {
       <h1>Aggiungi una fattura</h1>
 
       <OrderList liftState={getSelectedOrders}/>
-      <InvoiceForm listaSelezionata={<SelectedOrdersList lista={selectedOrders}/>}></InvoiceForm>
+      <InvoiceForm ordiniDaAggiornare={selectedOrders} listaSelezionata={<SelectedOrdersList lista={selectedOrders}/>}></InvoiceForm>
       {/*<SelectedOrdersList lista={selectedOrders}/>*/}
     </div>
   )
