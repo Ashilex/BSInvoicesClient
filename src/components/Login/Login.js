@@ -36,15 +36,15 @@ function Login(props) {
       <h1>Esegui l'accesso per modificare le fatture</h1>
         <label>
           <p>Username</p>
-          <input type="text" {...username} autoComplete="new-password" />
+          <input className="input-text" type="text" {...username} autoComplete="new-password" />
         </label>
         <label>
           <p>Password</p>
-          <input type="password" {...password} autoComplete="new-password" />
+          <input className="input-text" type="password" {...password} autoComplete="new-password" />
         </label>
         {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
         <div>
-          <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
+          <input  className="input-button" type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
 
         </div>
 

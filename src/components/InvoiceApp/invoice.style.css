@@ -1,0 +1,42 @@
+.invoice-app {
+    margin-top: 150px;
+}
+
+.orders-list {
+    position: sticky;
+    top: 200px;
+    left: 40px;
+}
+
+.welcome {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    font-weight: bold;
+    z-index: 3;
+}
+
+
+.welcome input{
+    border: white;
+    margin-left: 10px;
+    padding: 7px 20px;
+    color: white;
+    background: red;
+    border-radius: 20px;
+    font-weight: bold;
+
+}
+
+.invoice-app h1 {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    top: 17px;
+    padding-top: 137px;
+    background-color: white;
+    z-index: 0;
+}
+

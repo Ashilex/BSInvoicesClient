@@ -10,3 +10,15 @@ export const retrieveCompanies = () => {
     console.log(error)
   });
 }
+
+export const postBillData = (formData) => {
+  return axios.post(`${process.env.REACT_APP_HOST}/api/business/bill`, {
+    data: formData
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}

@@ -1,0 +1,22 @@
+.gabbia-selected-orders {
+    background-color: red;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /*grid-template-rows: repeat(12, 32px);*/
+    color: white;
+    padding-left: 70px;
+    width: 95%;
+    margin-left: -50px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.selected-order {
+    padding: 14px;
+    max-width: 188px;
+    max-height: 43px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 10px;
+    align-self: center;
+}
