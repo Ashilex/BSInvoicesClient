@@ -16,6 +16,7 @@ function InvoiceForm(props) {
     console.log('dati provenienti dalla selezione ordini', JSON.stringify(props.ordiniDaAggiornare))
     postBillData(data, props.ordiniDaAggiornare.filter(order=>order !== null).map(order=>order.id_external_order))
     alert(JSON.stringify(data));
+    props.aggiornaOrdini()
 
   }
 

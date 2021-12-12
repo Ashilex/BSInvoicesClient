@@ -10,7 +10,13 @@ import './invoice.style.css'
 
 function InvoiceApp(props) {
   const [selectedOrders, setSelectedOrders] = useState(null)
+  const [update, setUpdate] = useState(false)
   const user = getUser();
+
+  const updateOrdersListAfterBill = () => {
+    setUpdate(!update)
+    setSelectedOrders(null)
+  }
 
   const getSelectedOrders = (ordiniSelezionati) => {
     setSelectedOrders(ordiniSelezionati)
@@ -32,8 +38,8 @@ function InvoiceApp(props) {
       </div>
       <h1>Aggiungi una fattura</h1>
 
-      <OrderList liftState={getSelectedOrders}/>
-      <InvoiceForm ordiniDaAggiornare={selectedOrders} listaSelezionata={<SelectedOrdersList lista={selectedOrders}/>}></InvoiceForm>
+      <OrderList liftState={getSelectedOrders} aggiornami={update}/>
+      <InvoiceForm ordiniDaAggiornare={selectedOrders} aggiornaOrdini={updateOrdersListAfterBill} listaSelezionata={<SelectedOrdersList lista={selectedOrders} />}></InvoiceForm>
       {/*<SelectedOrdersList lista={selectedOrders}/>*/}
     </div>
   )

@@ -23,7 +23,7 @@ function OrderList(props) {
       }).catch(error => {
       console.log(error)
     });
-  },[])
+  },[props.aggiornami])
 
 
 

@@ -10,6 +10,9 @@ function SelectedOrdersList({lista}) {
     if (lista!==null){
      setSelectedOrders(lista)
     }
+    else{
+      setSelectedOrders([])
+    }
   }, [lista])
 
   return (
