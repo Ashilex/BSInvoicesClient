@@ -47,7 +47,8 @@ function App() {
             <div className="header riga-link">
               <NavLink to="/">Home</NavLink>
               <NavLink to="/login">Login</NavLink>
-              <NavLink to="/addInvoice">Dashboard</NavLink>
+              <NavLink to="/addInvoice">Aggiungi fattura</NavLink>
+              <NavLink to="/deleteInvoice">Elimina fattura</NavLink>
             </div>
           </div>
         </div>
@@ -55,7 +56,8 @@ function App() {
         <Routes className="route">
           <Route className="" path="/" element={<Home/>} />
           <Route className="" path="/login" element={<PublicRoute redirectTo='/addInvoice'><Login/></PublicRoute>}/>
-          <Route className="" path="/addInvoice" element={<PrivateRoute redirectTo="/login"><InvoiceApp/></PrivateRoute>} />
+          <Route className="" path="/addInvoice" element={<PrivateRoute redirectTo="/login"><InvoiceApp/></PrivateRoute>}/>
+          <Route className="" path="/deleteInvoice" element={<PrivateRoute redirectTo="/login"><DeleteInvoice/></PrivateRoute>}/>
         </Routes>
       </BrowserRouter>
     </div>
