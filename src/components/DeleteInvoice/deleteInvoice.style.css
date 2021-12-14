@@ -1,3 +1,30 @@
 .delContainer {
     margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.delContainer h1{
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    top: 17px;
+    padding-top: 137px;
+    background-color: white;
+    z-index: 1;
+}
+
+.deleteForm {
+    box-shadow: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.billRowContainer {
+
 }

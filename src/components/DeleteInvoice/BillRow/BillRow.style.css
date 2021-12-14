@@ -1,0 +1,67 @@
+.deletableRow {
+    display: flex;
+    border: 3px solid red;
+    border-radius: 9px;
+    padding: 10px 5px;
+    margin: 6px 0;
+    box-sizing: border-box;
+    height: 46px;
+    align-items: center;
+    z-index: 3;
+    overflow-y: clip;
+    justify-content: space-between;
+    width: 475px;
+    transition: height 0.5s;
+    position: relative;
+}
+
+.deletableRow div:first-child {
+    display: flex;
+    justify-content: space-evenly;
+    /*color: cornflowerblue;*/
+    width: 82%;
+}
+
+.compaio {
+    right: -10px;
+    flex-basis: 100px;
+}
+
+.scompaio{
+    right: -230px;
+    flex-basis: 0;
+}
+
+.confirmationDiv {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: red;
+    height: 150%;
+    border-radius: 50px;
+    padding: 0 20px 0 10px;
+    position: absolute;
+    transition: right 0.75s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+}
+
+.cancellando {
+    height: 0;
+}
+
+.fissi {
+    /*flex-grow: 4;*/
+    /*flex-basis: 90%;*/
+}
+
+
+.input-button-choose {
+    border: white;
+    padding: 6px 13px;
+    color: red;
+    background: white;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 0 5px;
+}

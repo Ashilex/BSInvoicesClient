@@ -4,6 +4,8 @@ import axios from "axios";
 import BillRow from "./BillRow/BillRow";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import {getUser, removeUserSession} from "../../Utils/Common";
+import {useNavigate} from "react-router-dom";
 
 function DeleteInvoice(props) {
 
@@ -13,7 +15,7 @@ function DeleteInvoice(props) {
   const [data, setData] = useState([])
   const [billsDataReady,setBillsDataReady] = useState(false)
 
-  let prova = ['ale', 'franco', 'giada']
+  const user = getUser();
 
   // useEffect(() => {
   //   axios.get(`http://localhost:3000/api/business/bill/range?start=2012-01-01&end=2013-01-01`)
@@ -42,21 +44,31 @@ function DeleteInvoice(props) {
       });
   }
 
+  let navigate = useNavigate()
+
+  const handleLogout = () => {
+    removeUserSession();
+    navigate('./login', {replace:true})
+  }
+
   return (
     <div className="delContainer">
+      <div className="welcome">
+        Welcome {user.name}!
+        <input type="button" onClick={handleLogout} value="Logout" />
+      </div>
       <h1>Elimina una fattura</h1>
       <p>Per eliminare una fattura seleziona una delle ultime esaurite oppure cercane una più vecchia selezionando un'intervallo di tempo.</p>
 
-      <div>
-        <form className="" onSubmit={handleSubmit(onSubmit)}>
+      <div className="">
+        <form className="deleteForm" onSubmit={handleSubmit(onSubmit)}>
 
             <div className="">A partire da</div>
-            <input className=""
-                   type="date"
-                   {...register("startFrom", {
-                     valueAsDate: true,
-                   })}
-            />
+
+              <input className="input-text"
+                     type="date"
+                 {...register("startFrom", {valueAsDate: true})}
+              />
             <ErrorMessage
               errors={errors}
               name="startFrom"
@@ -64,8 +76,10 @@ function DeleteInvoice(props) {
                 return (<span>{message}</span>)
               }}
             />
+
+
             <div className="">Fino a</div>
-            <input className=""
+            <input className="input-text"
                    type="date"
                    {...register("upTo", {
                      valueAsDate: true
@@ -85,8 +99,8 @@ function DeleteInvoice(props) {
       </div>
 
       { billsDataReady &&
-      <div>
-        <span>prova</span>
+      <div className="billRowContainer">
+
         {
           data.map((bill, index) => <BillRow key={'bill'+ index} bill={bill}></BillRow>
           )
