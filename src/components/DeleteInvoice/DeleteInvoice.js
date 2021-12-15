@@ -31,7 +31,7 @@ function DeleteInvoice(props) {
     let dataInizio = JSON.stringify(data.startFrom).substring(1, 11)
     let dataFine = JSON.stringify(data.upTo).substring(1, 11)
 
-    axios.get(`http://localhost:3000/api/business/bill/range?start=${dataInizio}&end=${dataFine}`)
+    axios.get(`${process.env.REACT_APP_HOST}:3000/api/business/bill/range?start=${dataInizio}&end=${dataFine}`)
       .then(response => {
         console.log('dati delle fatture', response.data.rangedBills)
         // alert(JSON.stringify(dataFine));

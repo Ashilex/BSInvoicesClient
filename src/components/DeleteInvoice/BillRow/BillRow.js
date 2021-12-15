@@ -17,7 +17,7 @@ function BillRow({key, bill}) {
   }
 
   const deleteRow = () => {
-    axios.delete(`http://localhost:3000/api/business/bill/`, {data:{bill:bill.id_internal_bill}})
+    axios.delete(`${process.env.REACT_APP_HOST}:3000/api/business/bill/`, {data:{bill:bill.id_internal_bill}})
       .then(response => {
         setIAmDeleting(true)
         setInterval(setExist(false), 1500)

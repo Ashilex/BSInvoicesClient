@@ -10,7 +10,7 @@ function OrderList(props) {
   const [selectedOrders,setSelectedOrders] = useState(null)
 
   useEffect(()=>{
-    axios.get(`http://localhost:3000/api/business/nullOrdersWC`)
+    axios.get(`${process.env.REACT_APP_HOST}:3000/api/business/nullOrdersWC`)
       .then(response => {
         let data = response.data.ordiniWCompany;
         // console.log('dati scaricati', data.length)

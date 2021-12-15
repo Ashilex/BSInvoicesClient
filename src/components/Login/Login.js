@@ -16,7 +16,7 @@ function Login(props) {
   const handleLogin = () => {
     setError(null);
     setLoading(true);
-    axios.post('http://localhost:3000/api/auth/users/signin', { username: username.value, password: password.value })
+    axios.post('${process.env.REACT_APP_HOST}:3000/api/auth/users/signin', { username: username.value, password: password.value })
       .then(response => {
         setLoading(false);
         setUserSession(response.data.token, response.data.user);

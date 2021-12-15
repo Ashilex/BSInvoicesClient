@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const retrieveCompanies = () => {
-  return axios.get(`http://localhost:3000/api/business/companies`)
+  return axios.get(`${process.env.REACT_APP_HOST}:3000/api/business/companies`)
     .then(response => {
       let data = response.data.companiesList;
       console.log('dati scaricati delle compagnie', data)
@@ -12,7 +12,7 @@ export const retrieveCompanies = () => {
 }
 
 export const postBillData = (formData, ordiniDaAggiornare) => {
-  return axios.post(`${process.env.REACT_APP_HOST}/api/business/bill`, {
+  return axios.post(`${process.env.REACT_APP_HOST}:3000/api/business/bill`, {
     data: {
       form:formData,
       ordersToUpdate: ordiniDaAggiornare
