@@ -4,7 +4,6 @@ export const retrieveCompanies = () => {
   return axios.get(`${process.env.REACT_APP_HOST}:3000/api/business/companies`)
     .then(response => {
       let data = response.data.companiesList;
-      console.log('dati scaricati delle compagnie', data)
       return data
     }).catch(error => {
     console.log(error)
@@ -22,6 +21,7 @@ export const postBillData = (formData, ordiniDaAggiornare) => {
       console.log(response);
     })
     .catch(function (error) {
-      console.log(error);
+      console.log('fattura non corretta: ', error);
+      alert('fattura non salvata: mancano dei dati')
     });
 }

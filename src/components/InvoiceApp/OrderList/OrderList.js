@@ -42,7 +42,7 @@ function OrderList(props) {
       <h3>Ordini senza fattura</h3>
       <div className="to-choose-list">
         {orders.map((e, index) => {
-          console.log('index', index)
+          // console.log('index', index)
           return (
 
               <div className="order-item" key={index}>

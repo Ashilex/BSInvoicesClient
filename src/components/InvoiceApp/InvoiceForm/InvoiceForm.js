@@ -14,8 +14,13 @@ function InvoiceForm(props) {
     console.log('dati provenienti dal form', data)
     console.log('dati provenienti dal form', JSON.stringify(data))
     console.log('dati provenienti dalla selezione ordini', JSON.stringify(props.ordiniDaAggiornare))
-    postBillData(data, props.ordiniDaAggiornare.filter(order=>order !== null).map(order=>order.id_external_order))
-    alert(JSON.stringify(data));
+    try{
+      postBillData(data, props.ordiniDaAggiornare.filter(order=>order !== null).map(order=>order.id_external_order))
+      alert(JSON.stringify(data));
+    }
+    catch (e) {
+      alert('manca ordine a cui allegare la fattura')
+    }
     props.aggiornaOrdini()
 
   }
@@ -85,7 +90,7 @@ function InvoiceForm(props) {
                        required: 'campo obbligatorio',
                        pattern: {
                          value:/[1-9][0-9]{0,4}\.[0-9]{2}/,
-                         message: 'usa due cifre decimali e NON usare la virgola "," ma il punto "."'
+                         message: 'usa il formato 0.00'
                        }
                         })
                      }
@@ -142,13 +147,23 @@ function InvoiceForm(props) {
                 </div>
                 <div className="jfy-right">Data di pagamento stimata</div>
                 <input className="jfy-left input-text calendar"
-                  type="date"
-                  {...register("months_payment_expected", {
-                    valueAsDate: true
-                  })}
-                />
+                    type="date"
+                    {...register("months_payment_expected", {
+                      valueAsDate: true,
+                      required: 'Questo campo è obbligatorio'
+                    })}
+                  />
                 <div className="jfy-right">Eventuali note </div>
-                <input className="jfy-left input-text" {...register("note")} placeholder="..." />
+                <div className="jfy-left">
+                  <input className="jfy-left input-text" {...register("note", { required: 'Questo campo è obbligatorio' })} placeholder="..." />
+                  <ErrorMessage
+                    errors={errors}
+                    name="note"
+                    render={({ message }) => {
+                      return (<span style={{"margin-left":'5px', 'color':'red'}}>{message}</span>)
+                    }}
+                  />
+                </div>
                 {/*<input type="hidden" {...register('id_bs_personal_data_business')} type="number" value="2" />*/}
 
               </div>
